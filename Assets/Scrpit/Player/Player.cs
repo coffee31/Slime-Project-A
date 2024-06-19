@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     Vector2 previousPos;
 
     SoundManager soundManager;
+    Skill skill;
+
 
     private void Start()
     {
@@ -44,6 +46,7 @@ public class Player : MonoBehaviour
         playerstate = FindObjectOfType<PlayerState>();
         photonView = GetComponent<PhotonView>();
         animator = GetComponent<Animator>();
+        skill = GetComponent<Skill>();
         previousPos = gameObject.transform.position;
         MoveCheck = false;
         Move = false;
@@ -173,6 +176,7 @@ public class Player : MonoBehaviour
             {
                 dam(nearestMonster);
                 animator.SetTrigger("Attack");
+                skill.SkillON();
                 soundManager.sound0();
                 soundManager.audioSource.Play();
                 AtkDelay = 0;

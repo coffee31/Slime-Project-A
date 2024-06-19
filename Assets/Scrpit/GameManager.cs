@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int Jewel = 0;
     public int BossCount = 1;
     public bool startCheck = false;
+    public bool btnON = false;
+
 
     private void Awake()
     {

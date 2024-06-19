@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerState : MonoBehaviour
 {
-    //변경해야할거 State 원상복귀
-    // UI로 업글한거 원상복귀
-    // Round랑 Start버튼 누른 상태 원상복귀
-
 
     private static PlayerState _instance = null;
     public static PlayerState Instance => _instance;
+
+    [SerializeField]
+    Inventory inven;
 
 
     [Header("플레이어 스탯")]
@@ -88,6 +87,28 @@ public class PlayerState : MonoBehaviour
         MagicDMG = 5; // 5씩 상승
         AllDamage = 0.03f; //3%씩 상승
         gold = 0;
+
+        invenCheck();
     }
+
+    void invenCheck()
+    {
+        foreach(Item item in inven.Inventoryitems)
+        {
+            if (item.ID == 1)
+            {
+                Weapon weapon = (Weapon)item;
+                dmg += weapon.Damage;
+            }
+            else if (item.ID == 2)
+            {
+                Glove glove = (Glove)item;
+                atkSpeed -= glove.atkSpeed;
+            }
+        }
+
+
+    }
+
 
 }

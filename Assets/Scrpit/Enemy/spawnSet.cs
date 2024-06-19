@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class spawnSet : MonoBehaviour
 {
@@ -18,6 +17,8 @@ public class spawnSet : MonoBehaviour
 
     int Timer;
     GameObject clone;
+
+    public Text WaveText;
     
 
 
@@ -36,6 +37,7 @@ public class spawnSet : MonoBehaviour
             GameManager.Instance.startCheck = true;
             StartCoroutine("SpawnEnemy");
             Debug.Log("½ºÅ¸Æ®");
+            WaveText.text = "Wave Timer : " + Timer;
         }
         else
         {
@@ -83,6 +85,7 @@ public class spawnSet : MonoBehaviour
                 GameManager.Instance.remainEnemy += 1;
                 monsterCount--;
                 Timer--;
+                WaveText.text = "Wave Timer : " + Timer;
                 yield return new WaitForSeconds(spanwTime);
             }
 
@@ -100,6 +103,7 @@ public class spawnSet : MonoBehaviour
         {
             Debug.Log(Timer);
             Timer--;
+            WaveText.text = "Wave Timer : " + Timer;
             yield return new WaitForSeconds(1.0f);
         }
 

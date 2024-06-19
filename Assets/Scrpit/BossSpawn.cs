@@ -37,7 +37,7 @@ public class BossSpawn : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             spawnStart();
-            photonView.RPC("SyncVariablesRPC", RpcTarget.OthersBuffered, BossON, BossCreate, index, currentBossHP);
+            photonView.RPC("SyncVariablesRPC", RpcTarget.OthersBuffered, BossON, BossCreate, index);
         }
     }
 
